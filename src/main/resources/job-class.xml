@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<type name="user" class="cn.xxan.reflect.User">
+		<age>18</age>
+	</type>
+
+	<type name="man" class="cn.xxan.reflect.Man">
+		<age>28</age>
+	</type>
+
+	<type name="woman" class="cn.xxan.reflect.Woman">
+		<age>38</age>
+	</type>
+
+</mapping>
