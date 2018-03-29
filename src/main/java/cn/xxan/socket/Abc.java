@@ -23,6 +23,7 @@ public class Abc {
         System.out.println(key + "," + value);
         System.out.println("通过git stash 保存的内容");
         System.out.println("未提交的冲突解决");
+        System.out.println("这是本地改了的");
 
     }
 }
