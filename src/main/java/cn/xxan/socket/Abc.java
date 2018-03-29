@@ -22,6 +22,7 @@ public class Abc {
         String value = map.entrySet().iterator().next().getValue();
         System.out.println(key + "," + value);
         System.out.println("通过git stash 保存的内容");
+        System.out.println("未提交的冲突解决");
 
     }
 }
