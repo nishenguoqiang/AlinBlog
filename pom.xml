@@ -28,6 +28,19 @@
 
   <dependencies>
 
+    <!--oracle驱动：开始-->
+    <dependency>
+      <groupId>com.oracle</groupId>
+      <artifactId>ojdbc14</artifactId>
+      <version>10.2.0.3.0</version>
+    </dependency>
+    <!--oracle驱动：开始-->
+    <dependency>
+      <groupId>commons-dbutils</groupId>
+      <artifactId>commons-dbutils</artifactId>
+      <version>1.6</version>
+    </dependency>
+
     <!--hadoop需要的依赖：开始-->
     <dependency>
       <groupId>org.apache.hadoop</groupId>
