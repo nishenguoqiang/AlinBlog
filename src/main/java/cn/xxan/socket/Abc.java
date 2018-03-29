@@ -20,7 +20,7 @@ public class Abc {
 
         String key = map.entrySet().iterator().next().getKey();
         String value = map.entrySet().iterator().next().getValue();
-        System.out.println(key + "," + value);
+        System.out.println(key + "," + value + "测试冲突处理");
 
     }
 }
