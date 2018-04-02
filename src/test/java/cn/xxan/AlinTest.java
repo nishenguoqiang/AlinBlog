@@ -4,8 +4,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.junit.Test;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 public class AlinTest {
 
@@ -51,5 +50,50 @@ public class AlinTest {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void assembleSql(){
+        String sql = "SELECT I.PID,I.KIND_CODE,I.POI_NUM FROM IX_POI I "
+                + "WHERE I.POI_NUM IN (";
+
+        List<String> parms = new LinkedList<>();
+        for (int i = 0;i<=9483648;i++){
+            parms.add("123456" + i);
+        }
+
+
+
+        String sqlStr = getSqlStr(parms, "I.POI_NUM");
+        System.out.println(sqlStr);
+        sql+=sqlStr;
+        System.out.println(sql);
+    }
+    //拼接sql，避免in中的参数超过1000个
+    public static String getSqlStr(List list, String parameter) {
+        if (!list.isEmpty()) {
+            List<String> setList = new ArrayList<String>(0);
+            Set set = new HashSet();
+            StringBuffer stringBuffer = new StringBuffer();
+            for (int i = 1; i <= list.size(); i++) {
+                set.add("'" + list.get(i - 1) + "'");
+                if (i % 9 == 0) {//999为阈值
+                    setList.add(org.apache.commons.lang.StringUtils.join(set.iterator(), ","));
+                    set.clear();
+                }
+            }
+            if (!set.isEmpty()) {
+                setList.add(org.apache.commons.lang.StringUtils.join(set.iterator(), ","));
+            }
+            stringBuffer.append(setList.get(0));
+            for (int j = 1; j < setList.size(); j++) {
+                stringBuffer.append(") or " + parameter + " in (");
+                stringBuffer.append(setList.get(j));
+            }
+            return stringBuffer.toString() + ")";
+        } else {
+            return "'')";
+        }
+
     }
 }
